@@ -200,6 +200,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Database\ApplicationDbContext.cs" />
     <Compile Include="Database\ApplicationDbContextMigrationsConfiguration.cs" />
     <Compile Include="Global.asax.cs">
@@ -234,7 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -14,6 +14,9 @@ class AxiosHelper {
     username: username,
     password: password
   }));
+
+  static sendMessage = () => AxiosHelper.instance.post('/messages/send', {
+  });
 }
 
 export default AxiosHelper;
