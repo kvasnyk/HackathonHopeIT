@@ -26,8 +26,8 @@ namespace HopeIT.Api.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Message>()
-                .HasKey(x => x.Id);
+            modelBuilder.Entity<Message>().ToTable("Messages");
+            modelBuilder.Entity<Message>().HasKey(x => x.Id);
         }
     }
 }

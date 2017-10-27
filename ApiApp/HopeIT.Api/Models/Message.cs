@@ -10,6 +10,6 @@ namespace HopeIT.Api.Models
 
         public string Content { get; set; }
 
-        public DateTime SendOn { get; set; }
+        public DateTime SentOn { get; set; }
     }
 }
