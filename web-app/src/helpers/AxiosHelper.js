@@ -1,3 +1,4 @@
+import AuthHelper from './AuthHelper';
 import Axios from 'axios';
 import Qs from 'qs';
 
@@ -16,6 +17,10 @@ class AxiosHelper {
   }));
 
   static sendMessage = () => AxiosHelper.instance.post('/messages/send', {
+  }, {
+    headers: {
+      'Authorization': 'Bearer ' + AuthHelper.getToken()
+    }
   });
 }
 

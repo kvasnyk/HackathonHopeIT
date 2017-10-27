@@ -15,6 +15,17 @@ class AuthHelper {
     const user = decodeToken(token);
     sessionStorage.session = JSON.stringify(user);
   };
+
+  static getSession = () => {
+    const user = JSON.parse(sessionStorage.session);
+    return user;
+  };
+
+  static getToken = () => {
+    const user = AuthHelper.getSession();
+    if(user) return user.token;
+    return;
+  };
 }
 
 export default AuthHelper;

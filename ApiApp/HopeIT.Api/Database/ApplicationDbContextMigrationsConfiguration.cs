@@ -1,4 +1,7 @@
 ﻿using HopeIT.Api.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Data.Entity.Migrations;
 
 namespace HopeIT.Api.Database
@@ -16,7 +19,22 @@ namespace HopeIT.Api.Database
         {
             base.Seed(context);
 
-            context.Users.AddOrUpdate(x => x.UserName, new ApplicationUser
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new ApplicationUserManager(userStore);
+
+            context.Roles.AddOrUpdate(x => x.Name, new IdentityRole
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Admin"
+            });
+
+            context.Roles.AddOrUpdate(x => x.Name, new IdentityRole
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "User"
+            });
+
+            var adminUser = new ApplicationUser
             {
                 Id = "F5184C6A-528E-488A-B57C-B4CA5DBD2DD4",
                 UserName = "admin",
@@ -28,7 +46,12 @@ namespace HopeIT.Api.Database
                 PhoneNumber = "+48 123 456 789",
                 PhoneNumberConfirmed = true,
                 LockoutEnabled = false
-            });
+            };
+            context.Users.AddOrUpdate(x => x.UserName, adminUser);
+
+            context.SaveChanges();
+
+            userManager.AddToRole(adminUser.Id, "Admin");
         }
     }
 }

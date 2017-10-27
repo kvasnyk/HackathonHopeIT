@@ -8,7 +8,7 @@ namespace HopeIT.Api.Controllers
     public class MessagesController : ApiController
     {
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         [Route("send")]
         public async Task<IHttpActionResult> SendMessageAsync()
         {
