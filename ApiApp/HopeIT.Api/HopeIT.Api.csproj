@@ -211,7 +211,12 @@
     <Compile Include="Migrations\201710271635183_InitialMigration.Designer.cs">
       <DependentUpon>201710271635183_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710272231418_MessageEntity.cs" />
+    <Compile Include="Migrations\201710272231418_MessageEntity.Designer.cs">
+      <DependentUpon>201710272231418_MessageEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\HopeITJWTFormat.cs" />
     <Compile Include="Providers\HopeITOAuthAuthorizationServerProvider.cs" />
@@ -241,6 +246,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710271635183_InitialMigration.resx">
       <DependentUpon>201710271635183_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710272231418_MessageEntity.resx">
+      <DependentUpon>201710272231418_MessageEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
