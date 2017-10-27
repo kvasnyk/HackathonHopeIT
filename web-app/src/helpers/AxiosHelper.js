@@ -16,7 +16,9 @@ class AxiosHelper {
     password: password
   }));
 
-  static sendMessage = () => AxiosHelper.instance.post('/messages/send', {
+  static sendMessage = (subject, content) => AxiosHelper.instance.post('/messages/send', {
+    subject: subject,
+    content: content
   }, {
     headers: {
       'Authorization': 'Bearer ' + AuthHelper.getToken()

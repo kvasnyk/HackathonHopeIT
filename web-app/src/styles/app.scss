@@ -45,6 +45,11 @@ body {
   height: $footerHeight;
 }
 
+.clear-fix {
+  display: block;
+  clear: both;
+}
+
 .page {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -53,7 +58,7 @@ body {
 form {
   button[type=submit] {
     display: block;
-    margin: 0 auto;
+    margin: 0px auto;
     font-size: 18px;
     font-family: $mainFont;
     text-align: center;
@@ -64,6 +69,7 @@ form {
     border: 2px solid $colorRed;
     border-radius: 3px;
     cursor: pointer;
+    clear: both;
 
     transition-duration: 0.5s;
 
@@ -80,7 +86,6 @@ form {
 .form-row {
   width: 720px;
   margin: 0 auto 15px auto;
-  height: 40px;
 
   .form-label {
     width: 200px;
@@ -101,7 +106,7 @@ form {
     float: left;
     text-align: left;
 
-    input {
+    input, textarea {
       display: block;
       width: calc(100% - 32px);
       padding: 10px 15px;
@@ -119,10 +124,10 @@ form {
       }
     }
 
-    &:after {
-      content: '';
-      display: block;
+    textarea {
+      resize: none;
+      height: 300px;
       clear: both;
     }
-  }
+  }  
 }

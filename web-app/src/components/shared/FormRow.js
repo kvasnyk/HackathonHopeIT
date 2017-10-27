@@ -8,6 +8,7 @@ const FormRow = (props) => (
     <div className="form-content">
       {props.children[1]}
     </div>
+    <br className="clear-fix" />
   </div>
 );
 
