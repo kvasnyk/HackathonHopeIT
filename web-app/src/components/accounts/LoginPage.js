@@ -1,3 +1,4 @@
+import AxiosHelper from '../../helpers/AxiosHelper';
 import FormRow from '../shared/FormRow';
 import Page from '../shared/Page';
 import React from 'react';
@@ -23,9 +24,21 @@ class LoginPage extends React.Component {
     this.setState(prevState => ({ ...prevState, dataPassword: newValue }));
   };
 
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    AxiosHelper.token(this.state.dataUsername, this.state.dataPassword)
+      .then(response => {
+        debugger;
+      })
+      .catch(error => {
+        debugger;
+      });
+  };
+
   render = () => (
     <Page>
-      <form>
+      <form onSubmit={this.handleFormSubmit}>
         <FormRow>
           <label>{T.translate('username')}</label>
           <input type="text" value={this.state.dataUsername} onChange={this.handleUsernameValueChange} />
@@ -34,6 +47,7 @@ class LoginPage extends React.Component {
           <label>{T.translate('password')}</label>
           <input type="password" value={this.state.dataPassword} onChange={this.handlePasswordValueChange} />
         </FormRow>
+        <button type="submit">FIEWIFEWOIFJEWIF</button>
       </form>
     </Page>
   );
