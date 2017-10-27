@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using HopeIT.Api.BindingModels;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace HopeIT.Api.Controllers
@@ -10,7 +11,7 @@ namespace HopeIT.Api.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("send")]
-        public async Task<IHttpActionResult> SendMessageAsync()
+        public async Task<IHttpActionResult> SendMessageAsync(SendMessageBindingModel model)
         {
             return Ok();
         }
