@@ -1,4 +1,5 @@
-﻿using HopeIT.Api.Models;
+﻿using HopeIT.Api.Database;
+using HopeIT.Api.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
