@@ -50,6 +50,33 @@ body {
   padding-bottom: 20px;
 }
 
+form {
+  button[type=submit] {
+    display: block;
+    margin: 0 auto;
+    font-size: 18px;
+    font-family: $mainFont;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 10px 30px;
+    background-color: white;
+    border: 2px solid $colorRed;
+    border-radius: 3px;
+    cursor: pointer;
+
+    transition-duration: 0.5s;
+
+    &:hover, &:focus {
+      background-color: $colorRed;
+      font-weight: normal;
+      color: white;
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}
+
 .form-row {
   width: 720px;
   margin: 0 auto 15px auto;
@@ -82,6 +109,7 @@ body {
       border-radius: 10px;
       border: 1px solid #888888;
       font-family: $mainFont;
+      transition-duration: 0.5s;
 
       &:focus {
         outline: 0;

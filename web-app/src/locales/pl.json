@@ -1,4 +1,5 @@
 {
-  "password": "Hasło",
-  "username": "Nazwa użytkownika"
+  "LogIn": "Zaloguj",
+  "Password": "Hasło",
+  "Username": "Nazwa użytkownika"
 }

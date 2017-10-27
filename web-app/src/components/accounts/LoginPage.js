@@ -42,14 +42,14 @@ class LoginPage extends React.Component {
     <Page>
       <form onSubmit={this.handleFormSubmit}>
         <FormRow>
-          <label>{T.translate('username')}</label>
+          <label>{T.translate('Username')}</label>
           <input type="text" value={this.state.dataUsername} onChange={this.handleUsernameValueChange} autoFocus />
         </FormRow>
         <FormRow>
-          <label>{T.translate('password')}</label>
+          <label>{T.translate('Password')}</label>
           <input type="password" value={this.state.dataPassword} onChange={this.handlePasswordValueChange} />
         </FormRow>
-        <button type="submit">FIEWIFEWOIFJEWIF</button>
+        <button type="submit">{T.translate('LogIn')}</button>
       </form>
     </Page>
   );
