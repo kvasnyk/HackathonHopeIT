@@ -47,11 +47,33 @@ namespace HopeIT.Api.Database
                 PhoneNumberConfirmed = true,
                 LockoutEnabled = false
             };
-            context.Users.AddOrUpdate(x => x.UserName, adminUser);
 
+            context.Users.AddOrUpdate(x => x.UserName, adminUser);
             context.SaveChanges();
 
             userManager.AddToRole(adminUser.Id, "Admin");
+
+            for(int i = 1; i <= 100; i++)
+            {
+                var testUser = new ApplicationUser
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    UserName = $"testuser{i}",
+                    Email = $"testuser{i}@fakemail.fake",
+                    EmailConfirmed = true,
+                    PasswordHash = "ACMbNCBVgLot8XH3BMFVPyFLz9CHoSV/Z0NbM2dhwYvPpxrZPhyjZKg0ZDiM1CHgOg==",
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    AccessFailedCount = 0,
+                    PhoneNumber = "+48 123 456 789",
+                    PhoneNumberConfirmed = true,
+                    LockoutEnabled = false
+                };
+
+                context.Users.AddOrUpdate(x => x.UserName, testUser);
+                context.SaveChanges();
+
+                userManager.AddToRole(testUser.Id, "User");
+            }
         }
     }
 }
