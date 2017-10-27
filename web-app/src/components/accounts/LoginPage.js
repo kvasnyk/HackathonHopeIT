@@ -1,4 +1,4 @@
-import Page from '../forms/Page';
+import Page from '../shared/Page';
 import React from 'react';
 
 class LoginPage extends React.Component {
@@ -25,6 +25,7 @@ class LoginPage extends React.Component {
     <Page>
       <form>
         <input type="text" value={this.state.dataUsername} onChange={this.handleUsernameValueChange} />
+        <br />
         <input type="password" value={this.state.dataPassword} onChange={this.handlePasswordValueChange} />
       </form>
     </Page>

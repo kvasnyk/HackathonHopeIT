@@ -1,3 +1,48 @@
+$containerWidth: 1170px;
+$navbarHeight: 70px;
+$footerHeight: 40px;
+
+$colorLightGrey: #eeeeee;
+$colorDarkGrey: #dddddd;
+$colorRed: #c00040;
+
 body {
-  background-color: red;
+  margin: 0;
+  background-color: $colorDarkGrey;
+}
+
+.app-navbar {
+  width: 100%;
+  background-color: $colorLightGrey;
+  height: $navbarHeight;
+
+  .container {
+    width: $containerWidth;
+    margin: 0 auto;
+
+    .logo {
+      height: $navbarHeight - 10px;
+      margin-top: 5px;
+    }
+  }
+}
+
+.app-content {
+  width: $containerWidth;
+  margin: 0 auto;
+  min-height: calc(100vh - #{$navbarHeight} - #{$footerHeight});
+}
+
+.app-footer {
+  width: 100%;
+  background-color: $colorLightGrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $footerHeight;
+}
+
+.page {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

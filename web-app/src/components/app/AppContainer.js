@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 class AppContainer extends Component {
   render = () => (
     <BrowserRouter>
-      <div>
+      <div className="app-container">
         <AppNavbar />
         <AppContent />
         <AppFooter />
