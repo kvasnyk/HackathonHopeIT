@@ -1,9 +1,12 @@
+import { Route, Switch } from 'react-router-dom';
+
+import LoginPage from '../accounts/LoginPage';
 import React from 'react';
-import { Switch } from 'react-router-dom';
 
 const AppContentRouter = (props) => (
   <Switch>
-
+    <Route path="/accounts/login" component={LoginPage} />
+    
   </Switch>
 );
 
