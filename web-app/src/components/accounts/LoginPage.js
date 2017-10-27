@@ -1,3 +1,4 @@
+import AuthHelper from '../../helpers/AuthHelper';
 import AxiosHelper from '../../helpers/AxiosHelper';
 import FormRow from '../shared/FormRow';
 import Page from '../shared/Page';
@@ -29,10 +30,11 @@ class LoginPage extends React.Component {
 
     AxiosHelper.token(this.state.dataUsername, this.state.dataPassword)
       .then(response => {
-        debugger;
+        AuthHelper.openSession(response.data.access_token);
+        alert('SUCCESS');
       })
       .catch(error => {
-        debugger;
+        alert('ERROR');
       });
   };
 
@@ -41,7 +43,7 @@ class LoginPage extends React.Component {
       <form onSubmit={this.handleFormSubmit}>
         <FormRow>
           <label>{T.translate('username')}</label>
-          <input type="text" value={this.state.dataUsername} onChange={this.handleUsernameValueChange} />
+          <input type="text" value={this.state.dataUsername} onChange={this.handleUsernameValueChange} autoFocus />
         </FormRow>
         <FormRow>
           <label>{T.translate('password')}</label>
