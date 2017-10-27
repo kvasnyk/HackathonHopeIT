@@ -8,7 +8,7 @@ export default class App extends React.Component {
   render = () => (
       <Router>
         <Scene key="root">
-          <Scene key="app-content"  component={AppContent} />
+          <Scene key="app-content"  component={AppContent}/>
         </Scene>
       </Router>
   );
