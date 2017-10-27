@@ -1,5 +1,6 @@
 'use strict';
 
+const cssnext = require('postcss-cssnext');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -200,13 +201,43 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.sass$/, /\.scss$/],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
         ],
+      },
+      {
+        test: [/\.sass$/, /\.scss$/],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+              plugins: () => [
+                cssnext({
+                  features: {
+                    customProperties: { preserve: true }
+                  },
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+                require('postcss-flexbugs-fixes')
+              ],
+              sourceMap: true
+            },
+          },
+          { loader: 'sass-loader', options: { sourceMap: true } },
+        ]
       },
       // ** STOP ** Are you adding a new loader?
       // Make sure to add the new loader(s) before the "file" loader.

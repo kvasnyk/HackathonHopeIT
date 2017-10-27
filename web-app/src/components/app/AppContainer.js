@@ -1,5 +1,3 @@
-import '../../styles/AppContainer.css';
-
 import React, { Component } from 'react';
 
 import AppContent from '../app/AppContent';
