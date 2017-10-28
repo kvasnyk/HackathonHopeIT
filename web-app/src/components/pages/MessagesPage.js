@@ -1,5 +1,6 @@
 import AxiosHelper from '../../helpers/AxiosHelper';
 import InfiniteScroll from 'react-infinite-scroller';
+import { Link } from 'react-router-dom';
 import Page from '../shared/Page';
 import React from 'react';
 import T from 'i18n-react';
@@ -42,7 +43,9 @@ class MessagesPage extends React.Component {
           {message.RecipientNames.join(', ')}
         </div>
         <div class="subject">
-          {message.Subject}
+          <Link to={`/messages/${message.Id}`}>
+            {message.Subject}
+          </Link>
         </div>
         <div class="sent-on">
           {message.SentOn}
