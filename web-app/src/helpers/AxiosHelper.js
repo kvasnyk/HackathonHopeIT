@@ -40,7 +40,7 @@ class AxiosHelper {
     }
   });
 
-  static getMessage = (messageId) => AxiosHelper.instance.get(`'/messages/${messageId}'`, {
+  static getMessage = (messageId) => AxiosHelper.instance.get(`/messages/${messageId}`, {
     headers: {
       'Authorization': 'Bearer ' + AuthHelper.getToken()
     }

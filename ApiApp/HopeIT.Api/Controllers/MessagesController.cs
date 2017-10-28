@@ -70,5 +70,24 @@ namespace HopeIT.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("{messageId}")]
+        public async Task<IHttpActionResult> GetMessageAsync(Guid messageId)
+        {
+            var entity = await _messagesRepository.Get(messageId);
+
+            var message = new MessageReadModel
+            {
+                Id = entity.Id,
+                Subject = entity.Subject,
+                Content = entity.Content,
+                SentOn = entity.SentOn.ToString("dd.MM.yyyy"),
+                RecipientNames = entity.MessageRecipients.Select(y => y.Recipient.UserName).ToList()
+            };
+
+            return Ok(message);
+        }
     }
 }

@@ -13,7 +13,7 @@ class MessagePage extends React.Component {
     if(!this.state.message) {
       AxiosHelper.getMessage(this.props.match.params.messageId)
         .then(response => {
-          alert('SUCCESS');
+          this.setState(prevState => ({ ...prevState, message: response.data }));
         })
         .catch(error => {
           alert('ERROR');
@@ -23,7 +23,7 @@ class MessagePage extends React.Component {
 
   render = () => (
     <Page>
-      MessagePage
+      {this.state.message ? this.state.message.Subject : null}
     </Page>
   )
 }
