@@ -32,24 +32,22 @@ class UserPage extends React.Component {
 
   render = () => {
     const messagesBox = (
-      <div>
+      <div className={this.state.isMessagesBoxOpen ? "user-messages-open" : "user-messages-close"}>
         {!this.state.user || !this.state.user.Messages ?  null :
           this.state.user.Messages.map(message => (
-            <div className="message-info">
-              <div class="subject">
+            <div className="message-info" key={message.Id}>
+              <div className="subject">
                 <Link to={`/messages/${message.Id}`}>
                   {message.Subject}
                 </Link>
               </div>
-              <div class="sent-on">
+              <div className="sent-on">
                 {message.SentOn}
               </div>
             </div>
           ))}
       </div>
     );
-
-    debugger;
 
     return (
       <Page>
@@ -68,13 +66,13 @@ class UserPage extends React.Component {
           </div>
           <div className="info">
             <label>{T.translate('Messages')}</label>
-            <div className="content" onClick={this.handleMessagesClick}>
+            <div className="content" onClick={this.handleMessagesClick} style={{ cursor: 'pointer' }}>
               {this.state.user ? this.state.user.MessagesCount : null}
               {this.state.isMessagesBoxOpen ? <div className="arrow-left"></div> : null}
               {!this.state.isMessagesBoxOpen && this.state.user.MessagesCount > 0 ? <div className="arrow-down"></div> : null}
             </div>
           </div>
-          {this.state.isMessagesBoxOpen ? messagesBox : null}
+          {messagesBox}
           <div className="info">
             <label>{T.translate('Donations')}</label>
             <div className="content">

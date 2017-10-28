@@ -14,6 +14,15 @@ body {
   font-family: $mainFont;
 }
 
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+  width: 100%;
+}
+
 .app-navbar {
   width: 100%;
   background-color: $colorLightGrey;
@@ -314,4 +323,16 @@ form {
       line-height: 50px;
     }
   }
+}
+
+.user-messages-close {
+  max-height: 0;
+  transition: max-height 1s ease-in;
+  overflow: hidden;
+}
+
+.user-messages-open {
+  max-height: 1500px;
+  transition: max-height 2s ease-out;
+  overflow: hidden;
 }

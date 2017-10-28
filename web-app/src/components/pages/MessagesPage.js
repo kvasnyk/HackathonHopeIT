@@ -38,16 +38,16 @@ class MessagesPage extends React.Component {
     );
 
     const messages = this.state.messages.map(message => (
-      <div className="message-info">
-        <div class="recipients">
+      <div className="message-info" key={message.Id}>
+        <div className="recipients">
           {message.RecipientNames.join(', ')}
         </div>
-        <div class="subject">
+        <div className="subject">
           <Link to={`/messages/${message.Id}`}>
             {message.Subject}
           </Link>
         </div>
-        <div class="sent-on">
+        <div className="sent-on">
           {message.SentOn}
         </div>
       </div>
