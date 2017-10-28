@@ -26,7 +26,7 @@ class AxiosHelper {
     }
   });
 
-  static findUsers = () => AxiosHelper.instance.get('/users/test', {
+  static findUsers = () => AxiosHelper.instance.get('/users', {
     headers: {
       'Authorization': 'Bearer ' + AuthHelper.getToken()
     }

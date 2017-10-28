@@ -20,7 +20,7 @@ namespace HopeIT.Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        [Route("test")]
+        [Route("")]
         public async Task<IHttpActionResult> FindUsersAsync()
         {
             var allUsers = await _usersRepository.GetAllUsersAsync();
