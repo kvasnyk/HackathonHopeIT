@@ -1,7 +1,10 @@
+import 'react-select/dist/react-select.css';
+
 import AxiosHelper from '../../helpers/AxiosHelper';
 import FormRow from '../shared/FormRow';
 import Page from '../shared/Page';
 import React from 'react';
+import ReactSelect from 'react-select';
 import T from 'i18n-react';
 
 class SendMessagePage extends React.Component {
@@ -9,9 +12,32 @@ class SendMessagePage extends React.Component {
     super();
 
     this.state = {
-      dataSubject: ''
+      dataRecipients: [],
+      dataSubject: '',
+      dataContent: ''
     };
   }
+
+  getUsers = (input) => {
+    return AxiosHelper.findUsers()
+      .then(response => {
+        var mappedUsers = response.data.map(user => ({
+          label: user.UserName,
+          value: user.Id
+        }));
+        return { options: mappedUsers };
+      })
+      .catch(error => {
+        alert('ERROR');
+      });
+  };
+
+  handleRecipientsValueChange = (e) => {
+    this.setState(prevState => ({
+      ...prevState,
+      dataRecipients: e
+    }));
+  };
 
   handleSubjectValueChange = (e) => {
     const newValue = e.target.value;
@@ -38,6 +64,16 @@ class SendMessagePage extends React.Component {
   render = () => (
     <Page>
       <form onSubmit={this.handleFormSubmit}>
+        <FormRow>
+          <label>{T.translate('Recipients')}</label>
+          <ReactSelect.Async
+            className="react-select"
+            placeholder=""
+            loadOptions={this.getUsers}
+            multi={true}
+            value={this.state.dataRecipients}
+            onChange={this.handleRecipientsValueChange} />
+        </FormRow>
         <FormRow>
           <label>{T.translate('Subject')}</label>
           <input type="text" value={this.state.dataSubject} onChange={this.handleSubjectValueChange} autoFocus />

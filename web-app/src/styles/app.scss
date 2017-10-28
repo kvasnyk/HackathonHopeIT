@@ -106,7 +106,7 @@ form {
     float: left;
     text-align: left;
 
-    input, textarea {
+    input[type=text], input[type=password], textarea {
       display: block;
       width: calc(100% - 32px);
       padding: 10px 15px;
@@ -128,6 +128,23 @@ form {
       resize: none;
       height: 300px;
       clear: both;
+    }
+
+    .react-select {
+      .Select-control {
+        width: 100%;
+        height: 30px;
+        border-radius: 10px;
+        padding: 5px;
+      }
+
+      &.is-focused {
+        .Select-control {
+          outline: 0;
+          border: 1px solid $colorRed;
+          box-shadow: 0 0 3px $colorRed;
+        }
+      }
     }
   }  
 }
