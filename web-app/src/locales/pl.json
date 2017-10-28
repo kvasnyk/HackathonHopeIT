@@ -13,7 +13,10 @@
   "SendMessage": "Wyślij",
   "SentOn": "Wysłano",
   "Subject": "Temat",
+  "Username": "Nazwa użytkownika",
+  "AttachFiles": "Załącz pliki",
   "UserDetails": "Szczegóły użytkownika",
   "Username": "Nazwa użytkownika",
+  "DropFilesOrClickHereToAddAnAttachment": "Upuść pliki lub kliknij tu, aby dodać załącznik"
   "Users": "Użytkownicy"
 }

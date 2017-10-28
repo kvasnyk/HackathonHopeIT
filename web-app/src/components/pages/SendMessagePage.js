@@ -1,6 +1,7 @@
 import 'react-select/dist/react-select.css';
 
 import AxiosHelper from '../../helpers/AxiosHelper';
+import Dropzone from 'react-dropzone';
 import FormRow from '../shared/FormRow';
 import Page from '../shared/Page';
 import React from 'react';
@@ -12,16 +13,32 @@ class SendMessagePage extends React.Component {
     super();
 
     this.state = {
+      dataFiles: [],
+      dataUrls: [],
       dataRecipients: [],
       dataSubject: '',
       dataContent: ''
     };
   }
 
+  componentDidMount = () => {
+    window.addEventListener("beforeunload", this.revokeFilePreviewUrls);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("beforeunload", this.revokeFilePreviewUrls);
+  };
+
+  revokeFilePreviewUrls = () => {
+    this.state.dataFiles.forEach((file) => {
+      URL.revokeObjectURL(file.preview);
+    });
+  };
+
   getUsers = (input) => {
     return AxiosHelper.findUsers()
       .then(response => {
-        var mappedUsers = response.data.map(user => ({
+        const mappedUsers = response.data.map(user => ({
           label: user.UserName,
           value: user.Id
         }));
@@ -49,11 +66,37 @@ class SendMessagePage extends React.Component {
     this.setState(prevState => ({ ...prevState, dataContent: newValue }));
   };
 
+  handleDropzoneDropAccteped = (files) => {
+    this.setState(prevState => ({ ...prevState, dataFiles: prevState.dataFiles.concat(files) }));
+  };
+
+  handleFileLoad = (e) => {
+    const file = {
+      content: e
+    }
+    this.setState(prevState => ({ ...prevState, dataUrls: prevState.dataUrls.concat(file) }));
+  };
+
+  setupReader = (files) => {
+    for(let x = 0, xlen = this.state.dataFiles.length; x < xlen; x++) {
+      let file = files[x];
+        let reader = new FileReader();
+  
+        reader.onload = (e) => {
+          const value = e.target.result;
+          this.setState(prevState => ({ ...prevState, dataUrls: prevState.dataUrls.concat({ ...{}, content: value })})); 
+        };
+        
+        reader.readAsDataURL(file);
+      }
+    }
+
   handleFormSubmit = (e) => {
     e.preventDefault();
     const recipientIds = this.state.dataRecipients.map(data => data.value);
-
-    AxiosHelper.sendMessage(this.state.dataSubject, this.state.dataContent, recipientIds)
+    this.setupReader(this.state.dataFiles);
+    
+    AxiosHelper.sendMessage(this.state.dataSubject, this.state.dataContent, recipientIds, this.state.dataUrls)
       .then(response => {
         alert('SUCCESS');
       })
@@ -84,6 +127,25 @@ class SendMessagePage extends React.Component {
         <FormRow>
           <label>{T.translate('Content')}</label>
           <textarea value={this.state.dataContent} onChange={this.handleContentValueChange} />
+        </FormRow>
+        <FormRow>
+          <label>{T.translate("AttachFiles")}</label>
+          <Dropzone 
+            multiple={true}
+            accept="image/*"
+            onDropAccepted={this.handleDropzoneDropAccteped}
+            className="app-dropzone">
+
+            {this.state.dataFiles.length > 0 ? (
+            <div className="images-container">
+              {this.state.dataFiles.map((file, index) => (
+                <img key={index} src={file.preview} className="dropped-image" alt="" />
+              ))}
+            </div>) : (
+              <span>{T.translate("DropFilesOrClickHereToAddAnAttachment")}</span>
+            )}
+
+          </Dropzone>
         </FormRow>
         <button type="submit">{T.translate('Send')}</button>
       </form>

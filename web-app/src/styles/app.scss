@@ -138,6 +138,56 @@ form {
     float: left;
     text-align: left;
 
+    .app-dropzone {
+      position: relative;
+      min-height: 100px;
+      border: 1px solid #888888;
+      border-radius: 10px;
+      background-color: #fff;
+      text-align: justify;
+
+      .images-container {
+        flex: 1;
+        max-height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+
+        img {
+          padding: 3px;
+          border-radius: 10px;
+          max-height: 100px;
+          object-fit: cover;
+          display: flex;
+          flex: 1 1 auto;
+          flex-direction: row;
+          align-items: flex-start;
+        }
+      }
+
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+      .rejected {
+        border-style: solid;
+        border-color: #c66;
+        background-color: #eee;
+      }
+  
+      .disabled {
+        opacity: 0.5;
+      }
+  
+      .active {
+        border-style: solid;
+        border-color: #6c6;
+        background-color: '#eee';
+      }
+    }
+
     input[type=text], input[type=password], textarea {
       display: block;
       width: calc(100% - 32px);
@@ -292,6 +342,7 @@ form {
   &:not(:first-child) {
     margin-top: 15px;
   }
+}
 }
 
 .arrow-down {
