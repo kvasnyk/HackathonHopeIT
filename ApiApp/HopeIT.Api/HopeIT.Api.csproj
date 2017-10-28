@@ -228,12 +228,17 @@
     <Compile Include="Migrations\201710280414326_MessageRecipientEntity.Designer.cs">
       <DependentUpon>201710280414326_MessageRecipientEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710280503041_CascadeDeleteUpdate.cs" />
+    <Compile Include="Migrations\201710280503041_CascadeDeleteUpdate.Designer.cs">
+      <DependentUpon>201710280503041_CascadeDeleteUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MessageRecipient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\HopeITJWTFormat.cs" />
     <Compile Include="Providers\HopeITOAuthAuthorizationServerProvider.cs" />
+    <Compile Include="ReadModels\UserReadModel.cs" />
     <Compile Include="Repositories\MessageRecipientsRepository.cs" />
     <Compile Include="Repositories\MessagesRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
@@ -275,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710280414326_MessageRecipientEntity.resx">
       <DependentUpon>201710280414326_MessageRecipientEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710280503041_CascadeDeleteUpdate.resx">
+      <DependentUpon>201710280503041_CascadeDeleteUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

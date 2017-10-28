@@ -1,4 +1,5 @@
 ﻿using HopeIT.Api.Database;
+using HopeIT.Api.ReadModels;
 using HopeIT.Api.Repositories;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +24,11 @@ namespace HopeIT.Api.Controllers
         public async Task<IHttpActionResult> FindUsersAsync()
         {
             var allUsers = await _usersRepository.GetAllUsersAsync();
-            var result = allUsers.OrderBy(x => x.UserName);
+            var result = allUsers.OrderBy(x => x.UserName).Select(x => new UserReadModel
+            {
+                Id = x.Id,
+                UserName = x.UserName
+            });
 
             return Ok(result);
         }
