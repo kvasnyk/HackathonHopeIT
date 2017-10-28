@@ -33,6 +33,7 @@ namespace HopeIT.Api.Controllers
                 Id = Guid.NewGuid(),
                 Subject = model.Subject,
                 Content = model.Content,
+                Files = model.Files,
                 SentOn = DateTime.UtcNow
             };
             await _messagesRepository.AddAsync(message);

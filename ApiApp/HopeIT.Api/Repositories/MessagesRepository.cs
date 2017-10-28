@@ -2,6 +2,7 @@
 using HopeIT.Api.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace HopeIT.Api.Repositories
 
         public async Task<List<Message>> GetAllMessagesAsync()
         {
-            return _context.Messages.ToList();
+            return await _context.Messages.ToListAsync();
         }
 
         public async Task<Message> Get(Guid id)

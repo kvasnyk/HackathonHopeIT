@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HopeIT.Api.Models;
 
 namespace HopeIT.Api.BindingModels
 {
@@ -9,5 +10,7 @@ namespace HopeIT.Api.BindingModels
         public string Content { get; set; }
 
         public List<string> Recipients { get; set; }
+
+        public List<File> Files { get; set; }
     }
 }
