@@ -1,6 +1,7 @@
 import AxiosHelper from '../../helpers/AxiosHelper';
 import Page from '../shared/Page';
 import React from 'react';
+import T from 'i18n-react';
 
 class MessagePage extends React.Component {
   constructor() {
@@ -23,7 +24,32 @@ class MessagePage extends React.Component {
 
   render = () => (
     <Page>
-      {this.state.message ? this.state.message.Subject : null}
+      <div className="message-page">
+        <div className="info">
+          <label>{T.translate('Subject')}</label>
+          <div className="content">
+            {this.state.message ? this.state.message.Subject : null}
+          </div>
+        </div>
+        <div className="info">
+          <label>{T.translate('Recipients')}</label>
+          <div className="content">
+            {this.state.message ? this.state.message.RecipientNames.join(', ') : null}
+          </div>
+        </div>
+        <div className="info">
+          <label>{T.translate('SentOn')}</label>
+          <div className="content">
+            {this.state.message ? this.state.message.SentOn : null}
+          </div>
+        </div>
+        <div className="info">
+          <label>{T.translate('Content')}</label>
+          <div className="content">
+            {this.state.message ? this.state.message.Content : null}
+          </div>
+        </div>
+      </div>
     </Page>
   )
 }

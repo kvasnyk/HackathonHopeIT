@@ -172,6 +172,9 @@ form {
       float: left;
       line-height: 50px;
       width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .subject {
@@ -180,11 +183,38 @@ form {
       text-overflow: ellipsis;
       font-weight: bold;
       width: auto;
+      margin-left: 20px;
     }
 
     .sent-on {
       float: right;
       line-height: 50px;
     }
+  }
+}
+
+.info {
+  background-color: $colorLightGrey;
+  border-radius: 10px;
+  min-height: 50px;
+  line-height: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-size: 18px;
+  display: flex;
+
+  label {
+    width: 200px;
+    float: left;
+    color: #bbbbbb;
+    font-weight: bold;
+  }
+
+  .content {
+    width: calc(100% - 210px);
+  }
+
+  &:not(:first-child) {
+    margin-top: 15px;
   }
 }
