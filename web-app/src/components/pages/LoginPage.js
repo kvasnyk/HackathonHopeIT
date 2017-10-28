@@ -40,6 +40,7 @@ class LoginPage extends React.Component {
 
   render = () => (
     <Page>
+      <h1>{T.translate('LogIn')}</h1>
       <form onSubmit={this.handleFormSubmit}>
         <FormRow>
           <label>{T.translate('Username')}</label>

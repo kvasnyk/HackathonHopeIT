@@ -7,8 +7,4 @@ const Page = (props) => (
   </div>
 );
 
-Page.propTypes = {
-  children: PropTypes.element
-};
-
 export default Page;

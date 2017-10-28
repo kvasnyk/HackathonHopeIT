@@ -15,7 +15,7 @@ const AppNavbar = (props) => {
   };
 
   const logInItem = user ? null : (
-    <div class="menu-item">
+    <div className="menu-item">
       <Link to="/accounts/login">
         {T.translate('LogIn')}
       </Link>
@@ -23,7 +23,7 @@ const AppNavbar = (props) => {
   );
 
   const logOutItem = user ? (
-    <div class="menu-item" onClick={handleLogOutClick}>
+    <div className="menu-item" onClick={handleLogOutClick}>
       <a href="#">
         {T.translate('LogOut')}
       </a>
@@ -31,7 +31,7 @@ const AppNavbar = (props) => {
   ) : null;
 
   const usersItem = user ? (
-    <div class="menu-item">
+    <div className="menu-item">
       <Link to="/users">
         {T.translate('Users')}
       </Link>
@@ -39,7 +39,7 @@ const AppNavbar = (props) => {
   ) : null;
 
   const messagesItem = user ? (
-    <div class="menu-item">
+    <div className="menu-item">
       <Link to="/messages">
         {T.translate('Messages')}
       </Link>
@@ -47,7 +47,7 @@ const AppNavbar = (props) => {
   ) : null;
 
   const sendMessageItem = user ? (
-    <div class="menu-item">
+    <div className="menu-item">
       <Link to="/messages/send">
         {T.translate('SendMessage')}
       </Link>

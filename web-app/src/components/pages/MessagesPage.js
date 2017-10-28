@@ -55,6 +55,7 @@ class MessagesPage extends React.Component {
 
     return (
       <Page>
+        <h1>{T.translate('Messages')}</h1>
         <InfiniteScroll
           pageStart={0}
           loadMore={this.loadMessages}

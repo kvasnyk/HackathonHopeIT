@@ -5,6 +5,7 @@
   "Loading": "Trwa ładowanie",
   "LogIn": "Zaloguj",
   "LogOut": "Wyloguj",
+  "MessageDetails": "Szczegóły wiadomości",
   "Messages": "Wiadomości",
   "Password": "Hasło",
   "Recipients": "Odbiorcy",
@@ -12,6 +13,7 @@
   "SendMessage": "Wyślij",
   "SentOn": "Wysłano",
   "Subject": "Temat",
+  "UserDetails": "Szczegóły użytkownika",
   "Username": "Nazwa użytkownika",
   "Users": "Użytkownicy"
 }

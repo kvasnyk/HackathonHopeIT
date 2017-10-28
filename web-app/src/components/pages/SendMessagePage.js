@@ -64,6 +64,7 @@ class SendMessagePage extends React.Component {
 
   render = () => (
     <Page>
+      <h1>{T.translate('SendMessage')}</h1>
       <form onSubmit={this.handleFormSubmit}>
         <FormRow>
           <label>{T.translate('Recipients')}</label>

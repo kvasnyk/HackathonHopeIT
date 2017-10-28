@@ -51,6 +51,7 @@ class UserPage extends React.Component {
 
     return (
       <Page>
+        <h1>{T.translate('UserDetails')}</h1>
         <div className="user-page">
           <div className="info">
             <label>{T.translate('Username')}</label>

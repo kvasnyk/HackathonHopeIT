@@ -24,6 +24,7 @@ class MessagePage extends React.Component {
 
   render = () => (
     <Page>
+      <h1>{T.translate('MessageDetails')}</h1>
       <div className="message-page">
         <div className="info">
           <label>{T.translate('Subject')}</label>

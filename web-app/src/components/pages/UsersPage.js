@@ -38,7 +38,7 @@ class UsersPage extends React.Component {
     );
 
     const users = this.state.users.map(user => (
-      <div className="user-info">
+      <div className="user-info" key={user.Id}>
         <div className="username">
           <Link to={`/users/${user.Id}`}>
             {user.UserName}
@@ -61,6 +61,7 @@ class UsersPage extends React.Component {
 
     return (
       <Page>
+        <h1>{T.translate('Users')}</h1>
         <InfiniteScroll
           pageStart={0}
           loadMore={this.loadUsers}
