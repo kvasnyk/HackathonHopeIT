@@ -31,7 +31,7 @@ class LoginPage extends React.Component {
     AxiosHelper.token(this.state.dataUsername, this.state.dataPassword)
       .then(response => {
         AuthHelper.openSession(response.data.access_token);
-        alert('SUCCESS');
+        this.props.history.push('/');
       })
       .catch(error => {
         alert('ERROR');

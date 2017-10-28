@@ -22,6 +22,10 @@ class AuthHelper {
     return user;
   };
 
+  static clearSession = () => {
+    sessionStorage.removeItem('session');
+  };
+
   static getToken = () => {
     const user = AuthHelper.getSession();
     if(user) return user.token;
