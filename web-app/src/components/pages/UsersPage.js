@@ -1,5 +1,6 @@
 import AxiosHelper from '../../helpers/AxiosHelper';
 import InfiniteScroll from 'react-infinite-scroller';
+import { Link } from 'react-router-dom';
 import Page from '../shared/Page';
 import React from 'react';
 import T from 'i18n-react';
@@ -39,7 +40,9 @@ class UsersPage extends React.Component {
     const users = this.state.users.map(user => (
       <div className="user-info">
         <div className="username">
-          {user.UserName}
+          <Link to={`/users/${user.Id}`}>
+            {user.UserName}
+          </Link>
         </div>
 
         <div className="email">

@@ -182,7 +182,6 @@ form {
       float: left;
       line-height: 50px;
       text-overflow: ellipsis;
-      font-weight: bold;
       width: auto;
       margin-left: 20px;
     }
@@ -245,6 +244,7 @@ form {
   padding-right: 25px;
   font-size: 18px;
   display: flex;
+  box-shadow: 0 0 3px black;
 
   label {
     width: 200px;
@@ -259,5 +259,59 @@ form {
 
   &:not(:first-child) {
     margin-top: 15px;
+  }
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid black;
+  float: right;
+  margin-top: 18px;
+  margin-right: -12px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent; 
+  border-right: 16px solid black;
+  float: right;
+  margin-top: 10px;
+  margin-right: -10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.user-page {
+  .message-info {
+    background-color: $colorLightGrey;
+    min-height: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+
+    .subject {
+      float: left;
+      line-height: 50px;
+      text-overflow: ellipsis;
+      width: auto;
+      margin-left: 20px;
+    }
+
+    .sent-on {
+      float: right;
+      line-height: 50px;
+    }
   }
 }

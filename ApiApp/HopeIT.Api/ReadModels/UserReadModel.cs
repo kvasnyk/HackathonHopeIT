@@ -1,4 +1,6 @@
-﻿namespace HopeIT.Api.ReadModels
+﻿using System.Collections.Generic;
+
+namespace HopeIT.Api.ReadModels
 {
     public class UserReadModel
     {
@@ -11,5 +13,7 @@
         public int MessagesCount { get; set; }
 
         public float DonationsCount { get; set; }
+
+        public List<MessageReadModel> Messages { get; set; }
     }
 }

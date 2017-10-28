@@ -35,5 +35,31 @@ namespace HopeIT.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("{userId}")]
+        public async Task<IHttpActionResult> GetUserAsync(string userId)
+        {
+            var entity = await _usersRepository.Get(userId);
+
+            var user = new UserReadModel
+            {
+                Id = entity.Id,
+                UserName = entity.UserName,
+                Email = entity.Email,
+                MessagesCount = entity.MessageRecipients.Count,
+                DonationsCount = 1500.24f,
+                Messages = entity.MessageRecipients.Select(x => new MessageReadModel
+                {
+                    Id = x.Message.Id,
+                    Subject = x.Message.Subject,
+                    Content = x.Message.Content,
+                    SentOn = x.Message.SentOn.ToString("dd.MM.yyyy")
+                }).ToList()
+            };
+
+            return Ok(user);
+        }
     }
 }

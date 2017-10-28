@@ -21,5 +21,10 @@ namespace HopeIT.Api.Repositories
             var userRole = await _context.Roles.SingleAsync(r => r.Name == "User");
             return _context.Users.Where(x => x.Roles.Any(r => r.RoleId == userRole.Id)).ToList();
         }
+
+        public async Task<ApplicationUser> Get(string id)
+        {
+            return _context.Users.SingleOrDefault(x => x.Id == id);
+        }
     }
 }
