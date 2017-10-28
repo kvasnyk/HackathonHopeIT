@@ -16,16 +16,17 @@ class AxiosHelper {
     password: password
   }));
 
-  static sendMessage = (subject, content) => AxiosHelper.instance.post('/messages/send', {
+  static sendMessage = (subject, content, recipients) => AxiosHelper.instance.post('/messages/send', {
     subject: subject,
-    content: content
+    content: content,
+    recipients: recipients
   }, {
     headers: {
       'Authorization': 'Bearer ' + AuthHelper.getToken()
     }
   });
 
-  static findUsers = () => AxiosHelper.instance.get('/users/test', {
+  static findUsers = () => AxiosHelper.instance.get('/users', {
     headers: {
       'Authorization': 'Bearer ' + AuthHelper.getToken()
     }

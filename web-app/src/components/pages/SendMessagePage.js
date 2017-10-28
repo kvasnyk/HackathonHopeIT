@@ -51,8 +51,9 @@ class SendMessagePage extends React.Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
+    const recipientIds = this.state.dataRecipients.map(data => data.value);
 
-    AxiosHelper.sendMessage(this.state.dataSubject, this.state.dataContent)
+    AxiosHelper.sendMessage(this.state.dataSubject, this.state.dataContent, recipientIds)
       .then(response => {
         alert('SUCCESS');
       })
@@ -69,6 +70,7 @@ class SendMessagePage extends React.Component {
           <ReactSelect.Async
             className="react-select"
             placeholder=""
+            loadingPlaceholder={T.translate('Loading')}
             loadOptions={this.getUsers}
             multi={true}
             value={this.state.dataRecipients}

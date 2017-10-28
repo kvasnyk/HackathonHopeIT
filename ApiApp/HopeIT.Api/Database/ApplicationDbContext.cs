@@ -8,6 +8,8 @@ namespace HopeIT.Api.Database
     {
         public DbSet<Message> Messages { get; set; }
 
+        public DbSet<MessageRecipient> MessageRecipients { get; set; }
+
         static ApplicationDbContext()
         {
             System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, ApplicationDbContextMigrationsConfiguration>(true));
@@ -28,6 +30,11 @@ namespace HopeIT.Api.Database
 
             modelBuilder.Entity<Message>().ToTable("Messages");
             modelBuilder.Entity<Message>().HasKey(x => x.Id);
+
+            modelBuilder.Entity<MessageRecipient>().ToTable("MessageRecipients");
+            modelBuilder.Entity<MessageRecipient>().HasKey(x => x.Id);
+            modelBuilder.Entity<MessageRecipient>().HasRequired(x => x.Message).WithMany(x => x.MessageRecipients).HasForeignKey(x => x.MessageId).WillCascadeOnDelete(false);
+            modelBuilder.Entity<MessageRecipient>().HasRequired(x => x.Recipient).WithMany(x => x.MessageRecipients).HasForeignKey(x => x.RecipientId).WillCascadeOnDelete(false);
         }
     }
 }

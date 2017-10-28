@@ -1,5 +1,7 @@
 ﻿using HopeIT.Api.Database;
+using HopeIT.Api.ReadModels;
 using HopeIT.Api.Repositories;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -18,12 +20,17 @@ namespace HopeIT.Api.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        [Route("test")]
+        [Route("")]
         public async Task<IHttpActionResult> FindUsersAsync()
         {
             var allUsers = await _usersRepository.GetAllUsersAsync();
+            var result = allUsers.OrderBy(x => x.UserName).Select(x => new UserReadModel
+            {
+                Id = x.Id,
+                UserName = x.UserName
+            });
 
-            return Ok(allUsers);
+            return Ok(result);
         }
     }
 }

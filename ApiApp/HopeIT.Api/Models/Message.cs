@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HopeIT.Api.Models
 {
@@ -11,5 +12,7 @@ namespace HopeIT.Api.Models
         public string Content { get; set; }
 
         public DateTime SentOn { get; set; }
+
+        public virtual ICollection<MessageRecipient> MessageRecipients { get; set; }
     }
 }

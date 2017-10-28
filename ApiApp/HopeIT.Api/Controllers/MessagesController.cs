@@ -13,10 +13,12 @@ namespace HopeIT.Api.Controllers
     public class MessagesController : ApiController
     {
         private readonly MessagesRepository _messagesRepository;
+        private readonly MessageRecipientsRepository _messageRecipientsRepository;
 
         public MessagesController()
         {
             _messagesRepository = new MessagesRepository(new ApplicationDbContext());
+            _messageRecipientsRepository = new MessageRecipientsRepository(new ApplicationDbContext());
         }
 
         [HttpPost]
@@ -31,8 +33,20 @@ namespace HopeIT.Api.Controllers
                 Content = model.Content,
                 SentOn = DateTime.UtcNow
             };
-
             await _messagesRepository.AddAsync(message);
+
+            foreach(var recipientId in model.Recipients)
+            {
+                var messageRecipient = new MessageRecipient
+                {
+                    Id = Guid.NewGuid(),
+                    MessageId = message.Id,
+                    RecipientId = recipientId,
+                    HasBeenRead = false
+                };
+
+                await _messageRecipientsRepository.AddAsync(messageRecipient);
+            }
 
             return Ok();
         }
