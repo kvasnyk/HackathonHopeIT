@@ -136,6 +136,8 @@ form {
         height: 30px;
         border-radius: 10px;
         padding: 5px;
+        border: 1px solid #888888;
+        transition-duration: 0.5s;
       }
 
       &.is-focused {

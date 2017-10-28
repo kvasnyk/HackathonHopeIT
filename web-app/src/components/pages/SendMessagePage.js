@@ -69,6 +69,7 @@ class SendMessagePage extends React.Component {
           <ReactSelect.Async
             className="react-select"
             placeholder=""
+            loadingPlaceholder={T.translate('Loading')}
             loadOptions={this.getUsers}
             multi={true}
             value={this.state.dataRecipients}
