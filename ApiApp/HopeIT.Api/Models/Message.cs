@@ -14,5 +14,7 @@ namespace HopeIT.Api.Models
         public DateTime SentOn { get; set; }
 
         public virtual ICollection<MessageRecipient> MessageRecipients { get; set; }
+
+        public virtual ICollection<File> Files { get; set; }
     }
 }

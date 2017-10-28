@@ -103,7 +103,8 @@ namespace HopeIT.Api.Database
                                 MessageId = id,
                                 RecipientId = testUser.Id
                             }
-                        }
+                        },
+                        Files = new List<File>()
                     };
 
                     context.Messages.AddOrUpdate(x => x.Subject, testMessage);

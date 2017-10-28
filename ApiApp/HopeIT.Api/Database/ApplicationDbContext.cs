@@ -35,6 +35,10 @@ namespace HopeIT.Api.Database
             modelBuilder.Entity<MessageRecipient>().HasKey(x => x.Id);
             modelBuilder.Entity<MessageRecipient>().HasRequired(x => x.Message).WithMany(x => x.MessageRecipients).HasForeignKey(x => x.MessageId).WillCascadeOnDelete(false);
             modelBuilder.Entity<MessageRecipient>().HasRequired(x => x.Recipient).WithMany(x => x.MessageRecipients).HasForeignKey(x => x.RecipientId).WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<File>().ToTable("Files");
+            modelBuilder.Entity<File>().HasKey(x => x.Id);
+            modelBuilder.Entity<File>().HasRequired(x => x.Message).WithMany(x => x.Files).HasForeignKey(x => x.MessageId).WillCascadeOnDelete(false);
         }
     }
 }

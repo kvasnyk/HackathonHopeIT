@@ -233,7 +233,12 @@
     <Compile Include="Migrations\201710280503041_CascadeDeleteUpdate.Designer.cs">
       <DependentUpon>201710280503041_CascadeDeleteUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710280745320_Files.cs" />
+    <Compile Include="Migrations\201710280745320_Files.Designer.cs">
+      <DependentUpon>201710280745320_Files.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MessageRecipient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -285,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710280503041_CascadeDeleteUpdate.resx">
       <DependentUpon>201710280503041_CascadeDeleteUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710280745320_Files.resx">
+      <DependentUpon>201710280745320_Files.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
