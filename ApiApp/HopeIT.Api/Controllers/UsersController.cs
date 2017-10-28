@@ -18,7 +18,7 @@ namespace HopeIT.Api.Controllers
             _usersRepository = new UsersRepository(new ApplicationDbContext());
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("")]
         public async Task<IHttpActionResult> FindUsersAsync()
@@ -27,7 +27,10 @@ namespace HopeIT.Api.Controllers
             var result = allUsers.OrderBy(x => x.UserName).Select(x => new UserReadModel
             {
                 Id = x.Id,
-                UserName = x.UserName
+                UserName = x.UserName,
+                Email = x.Email,
+                MessagesCount = x.MessageRecipients.Count,
+                DonationsCount = 1500.24f
             });
 
             return Ok(result);

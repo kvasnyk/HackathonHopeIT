@@ -17,6 +17,7 @@ class AuthHelper {
   };
 
   static getSession = () => {
+    if(!sessionStorage.session) return;
     const user = JSON.parse(sessionStorage.session);
     return user;
   };

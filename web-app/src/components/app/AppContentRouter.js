@@ -5,6 +5,7 @@ import MessagePage from '../pages/MessagePage';
 import MessagesPage from '../pages/MessagesPage';
 import React from 'react';
 import SendMessagePage from '../pages/SendMessagePage';
+import UsersPage from '../pages/UsersPage';
 
 const AppContentRouter = (props) => (
   <Switch>
@@ -13,6 +14,8 @@ const AppContentRouter = (props) => (
     <Route exact path="/messages" component={MessagesPage} />
     <Route exact path="/messages/send" component={SendMessagePage} />
     <Route exact path="/messages/:messageId" component={MessagePage} />
+
+    <Route exact path="/users" component={UsersPage} />
   </Switch>
 );
 

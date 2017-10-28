@@ -157,12 +157,13 @@ form {
 }
 
 .messages-list {
-  .message {
+  .message-info {
     background-color: $colorLightGrey;
     min-height: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     border-radius: 10px;
+    box-shadow: 0 0 3px black;
     
     &:not(:first-child) {
       margin-top: 10px;
@@ -189,6 +190,48 @@ form {
     .sent-on {
       float: right;
       line-height: 50px;
+    }
+  }
+}
+
+.users-list {
+  .user-info {
+    background-color: $colorLightGrey;
+    min-height: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px black;
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+
+    .username {
+      float: left;
+      line-height: 50px;
+      width: 300px;
+    }
+
+    .email {
+      float: left;
+      line-height: 50px;
+      width: auto;
+      margin-left: 20px;
+    }
+
+    .messages-count {
+      float: right;
+      line-height: 50px;
+      width: 100px;
+      text-align: left;
+      margin-right: 50px;
+    }
+
+    .donations-count {
+      float: right;
+      line-height: 50px;
+      width: 100px;
     }
   }
 }

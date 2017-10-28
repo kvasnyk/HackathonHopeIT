@@ -1,28 +1,27 @@
 import AxiosHelper from '../../helpers/AxiosHelper';
 import InfiniteScroll from 'react-infinite-scroller';
-import { Link } from 'react-router-dom';
 import Page from '../shared/Page';
 import React from 'react';
 import T from 'i18n-react';
 
-class MessagesPage extends React.Component {
+class UsersPage extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      messages: [],
+      users: [],
       hasMoreItems: true
     };
   }
 
-  loadMessages = (page) => {
-    AxiosHelper.findMessages(page)
+  loadUsers = (page) => {
+    AxiosHelper.findUsers(page)
       .then(response => {
         this.setState(prevState => {
-          var prevMessages = prevState.messages;
+          var prevUsers = prevState.users;
           return ({
             ...prevState,
-            messages: [...prevMessages, ...response.data],
+            users: [...prevUsers, ...response.data],
             hasMoreItems: response.data.length === 10
           });
         });
@@ -37,18 +36,22 @@ class MessagesPage extends React.Component {
       <div>{T.translate('Loading')}</div>
     );
 
-    const messages = this.state.messages.map(message => (
-      <div className="message-info">
-        <div class="recipients">
-          {message.RecipientNames.join(', ')}
+    const users = this.state.users.map(user => (
+      <div className="user-info">
+        <div className="username">
+          {user.UserName}
         </div>
-        <div class="subject">
-          <Link to={`/messages/${message.Id}`}>
-            {message.Subject}
-          </Link>
+
+        <div className="email">
+          {user.Email}
         </div>
-        <div class="sent-on">
-          {message.SentOn}
+
+        <div className="donations-count">
+          {user.DonationsCount}
+        </div>
+
+        <div className="messages-count">
+          {user.MessagesCount}
         </div>
       </div>
     ));
@@ -57,11 +60,11 @@ class MessagesPage extends React.Component {
       <Page>
         <InfiniteScroll
           pageStart={0}
-          loadMore={this.loadMessages}
+          loadMore={this.loadUsers}
           hasMore={this.state.hasMoreItems}
           loader={loader}>
-          <div className="messages-list">
-            {messages}
+          <div className="users-list">
+            {users}
           </div>
         </InfiniteScroll>
       </Page>
@@ -69,4 +72,4 @@ class MessagesPage extends React.Component {
   }
 }
 
-export default MessagesPage;
+export default UsersPage;
