@@ -31,6 +31,14 @@ class AxiosHelper {
       'Authorization': 'Bearer ' + AuthHelper.getToken()
     }
   });
+
+  static findMessages = (pageNumber) => AxiosHelper.instance.post('/messages', {
+    pageNumber: pageNumber
+  }, {
+    headers: {
+      'Authorization': 'Bearer ' + AuthHelper.getToken()
+    }
+  });
 }
 
 export default AxiosHelper;

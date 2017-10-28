@@ -155,3 +155,36 @@ form {
     }
   }  
 }
+
+.messages-list {
+  .message {
+    background-color: $colorLightGrey;
+    min-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+
+    .recipients {
+      float: left;
+      line-height: 50px;
+      width: 300px;
+    }
+
+    .subject {
+      float: left;
+      line-height: 50px;
+      text-overflow: ellipsis;
+      font-weight: bold;
+      width: auto;
+    }
+
+    .sent-on {
+      float: right;
+      line-height: 50px;
+    }
+  }
+}

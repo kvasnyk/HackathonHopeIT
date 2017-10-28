@@ -2,7 +2,9 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace HopeIT.Api.Database
 {
@@ -18,6 +20,8 @@ namespace HopeIT.Api.Database
         protected override void Seed(ApplicationDbContext context)
         {
             base.Seed(context);
+
+            var random = new Random();
 
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new ApplicationUserManager(userStore);
@@ -74,6 +78,39 @@ namespace HopeIT.Api.Database
 
                 userManager.AddToRole(testUser.Id, "User");
             }
+
+            for(int i = 1; i <= 100; i++)
+            {
+                var username = $"testuser{i}";
+                var testUser = context.Users.SingleOrDefault(x => x.UserName == username);
+                
+                for(int j = 1; j <= 10; j++)
+                {
+                    var id = Guid.NewGuid();
+
+                    var testMessage = new Message
+                    {
+                        Id = id,
+                        SentOn = DateTime.UtcNow,
+                        Subject = $"testuser{i}_testmessage{j}",
+                        Content = $"testuser{i}_testmessage{j}",
+                        MessageRecipients = new List<MessageRecipient>
+                        {
+                            new MessageRecipient
+                            {
+                                Id = Guid.NewGuid(),
+                                HasBeenRead = 0 == random.Next(0, 1),
+                                MessageId = id,
+                                RecipientId = testUser.Id
+                            }
+                        }
+                    };
+
+                    context.Messages.AddOrUpdate(x => x.Subject, testMessage);
+                }
+            }
+
+            context.SaveChanges();
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using HopeIT.Api.BindingModels;
 using HopeIT.Api.Database;
 using HopeIT.Api.Models;
+using HopeIT.Api.ReadModels;
 using HopeIT.Api.Repositories;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -49,6 +51,24 @@ namespace HopeIT.Api.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [Route("")]
+        public async Task<IHttpActionResult> FindMessagesAsync(FindMessagesBindingModel model)
+        {
+            var allMessages = await _messagesRepository.GetAllMessagesAsync();
+            var result = allMessages.OrderByDescending(x => x.SentOn).Skip(model.PageNumber * 10 - 10).Take(10).Select(x => new MessageReadModel
+            {
+                Id = x.Id,
+                Subject = x.Subject,
+                Content = x.Content,
+                SentOn = x.SentOn.ToString("dd.MM.yyyy"),
+                RecipientNames = x.MessageRecipients.Select(y => y.Recipient.UserName).ToList()
+            });
+
+            return Ok(result);
         }
     }
 }
