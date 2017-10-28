@@ -51,8 +51,9 @@ class SendMessagePage extends React.Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
+    const recipientIds = this.state.dataRecipients.map(data => data.value);
 
-    AxiosHelper.sendMessage(this.state.dataSubject, this.state.dataContent)
+    AxiosHelper.sendMessage(this.state.dataSubject, this.state.dataContent, recipientIds)
       .then(response => {
         alert('SUCCESS');
       })
